@@ -94,17 +94,160 @@ kubectl create -f q2svcshraddhasaini.yml
 ```
 --------
 ### :three: Question 3
->write a pod file named q3.yaml where your pod name is adhocpod2
->
->it must be underyour own namespace use container port 80 with docker image pushed in question 1
->
->label of the pod must be adhoc:yournameq3 like adhoc:ashuq3
->
->it must host webapp2 configured in docker image
->
->pod must be scheduled in minion 2
->
->create a service called q3svcyourname example q3svcashu of NodePort type and check by accessing it
->
->NodePort must be some custom port in the range of 30000-32000 make sure someone is not using the same port number
->
+## Task 3
+#### write podfile with custom scheduling
+#### Create a pod file named "q3.yaml"
+```
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    adhoc: rhythmbhiwaniq3
+  name: adhocpod2
+spec:
+  nodeSelector:
+    kubernetes.io/hostname: ip-172-31-41-104.ec2.internal
+  containers:
+  - env:
+    - name: x
+      value: app2
+    image: rhythmbhiwani/may2020q1:v1
+    name: adhocpod2
+    ports:
+    - containerPort: 80
+    resources: {}
+  dnsPolicy: ClusterFirst
+  restartPolicy: Never
+status: {}
+```
+#### Create the pod
+```
+kubectl create -f q3.yaml
+```
+
+#### Create service file named "q3svcrhythmbhiwani.yaml"
+```
+apiVersion: v1
+kind: Service
+metadata:
+  name: q3svcrhythmbhiwani
+spec:
+  type: NodePort
+  selector:
+    adhoc: rhythmbhiwaniq3
+  ports:
+    - port: 80
+      targetPort: 80
+      nodePort: 32123
+```
+#### Create the service
+```
+kubectl create -f q3svcrhythmbhiwani.yaml
+```
+
+
+## Task 4
+#### create a replicasets
+##### Create file named "q4rs.yaml"
+```
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: adhocrsrhythmbhiwani4
+  labels:
+    app: adhocrsrhythmbhiwani4
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      adhoc: ashishpandeyq4 
+  template:
+    metadata:
+      name: adhocpod4
+      labels:
+        adhoc: rhythmbhiwaniq4
+    spec:
+      containers:
+      - env:
+        - name: x
+          value: app2
+        image: ashishpandey/may2020q1:v1
+        imagePullPolicy: Always
+        name: adhocpod4
+        ports:
+        - containerPort: 80
+	
+#### Create the replicaset
+kubectl create -f q4.yml
+
+#### Create file "q4svcrhythmbhiwani.yml"
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    app: adhocrsashishpandey4
+  name: q4svcashishpandey
+spec:
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 80
+  selector:
+    adhoc: ashishpandeyq4
+  type: LoadBalancer
+  
+#### Create
+kubectl create -f q4svcashishpandey.yml
+
+## Question 5
+##### Create file "q1dep1.yml"
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: adhhocdepashishpandey5
+  labels:
+    adhoc: ashishpandeyq5
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      adhoc: ashishpandeyq5
+  template:
+    metadata:
+      labels:
+        adhoc: ashishpandeyq5
+    spec:
+       containers:
+        - env:
+          - name: x
+            value: app2
+          image: ashishpandey/may2020q1:v1
+          imagePullPolicy: Always
+          name: adhocpod2
+          ports:
+          - containerPort: 80
+	  
+#### Create
+kubectl create -f q5dep1.yaml
+
+#### Create file "q5svcashishpandey.yml"
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    adhoc: q5svcashishpandey
+  name: q5svcashishpandey
+spec:
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 80
+  selector:
+    adhoc: ashishpandeyq5
+  type: LoadBalancer
+  
+#### Create
+kubectl create -f q5svcashishpandey.yml
