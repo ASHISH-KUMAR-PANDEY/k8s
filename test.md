@@ -132,7 +132,7 @@ metadata:
 spec:
   type: NodePort
   selector:
-    adhoc: rhythmbhiwaniq3
+    adhoc: ashishpandeyq3
   ports:
     - port: 80
       targetPort: 80
@@ -147,6 +147,7 @@ kubectl create -f q3svcashishpandey.yml
 ## question 4
 #### create a replicasets
 ##### Create file named "q4.yml"
+'''
 apiVersion: apps/v1
 kind: ReplicaSet
 metadata:
@@ -173,10 +174,11 @@ spec:
         name: adhocpod4
         ports:
         - containerPort: 80
-	
+'''
+'''
 #### Create the replicaset
 kubectl create -f q4.yml
-
+'''
 #### Create file "q4svcashishpandey.yml"
 apiVersion: v1
 kind: Service
