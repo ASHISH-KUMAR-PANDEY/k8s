@@ -231,6 +231,7 @@ spec:
           ports:
           - containerPort: 80
 	  ```
+```
 #### Create
 ```
 kubectl create -f q1dep1.yml
