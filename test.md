@@ -1,5 +1,3 @@
-# Exam
-
 ### question 1
 adhochttpd.dockerfile
 ```shell
@@ -47,7 +45,7 @@ docker build -f adhochttpd.dockerfile -t ashishpandey1504/may2020q1:v1 .
 ```
 ---------
 
-### :two: Question 2
+### Question 2
 
 ##### q2.yml
 ```
