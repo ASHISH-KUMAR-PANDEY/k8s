@@ -176,9 +176,11 @@ spec:
         - containerPort: 80
 ```
 #### Create the replicaset
+```
 kubectl create -f q4.yml
 ```
 #### Create file "q4svcashishpandey.yml"
+```
 apiVersion: v1
 kind: Service
 metadata:
@@ -196,6 +198,7 @@ spec:
   type: LoadBalancer
  ```
 #### Create
+```
 kubectl create -f q4svcashishpandey.yml
 ```
 ## Question 5
@@ -228,9 +231,11 @@ spec:
           - containerPort: 80
   ```
 #### Create
+```
 kubectl create -f q1dep1.yml
 ```
 #### Create file "q5svcashishpandey.yml"
+```
 apiVersion: v1
 kind: Service
 metadata:
@@ -248,4 +253,6 @@ spec:
   type: LoadBalancer
 ```
 #### Create
+```
 kubectl create -f q5svcashishpandey.yml
+```
