@@ -1,0 +1,110 @@
+# Exam
+
+### :one: Question 1
+adhochttpd.dockerfile
+```shell
+FROM centos
+MAINTAINER ashishkumarpandey2000@gmail.com
+RUN yum install -y httpd
+ENV x=app
+EXPOSE 80
+RUN mkdir /myapps
+RUN mkdir /scripts
+COPY beginner-html-site-styled /myapps/app1
+COPY project-html-website /myapps/app2
+COPY start.sh /scripts/start.sh
+RUN chmod +x /scripts/start.sh
+ENTRYPOINT ["/bin/bash","/scripts/start.sh"]
+```
+
+#### Git clone command
+```shell
+git clone https://github.com/mdn/beginner-html-site-styled
+git clone https://github.com/microsoft/project-html-website
+```
+
+#### start.sh
+```shell
+#!/bin/bash
+
+if [ "$x" == "app1" ]
+then
+	cp -rf /mycode/webapp1/* /var/www/html/
+	httpd -DFOREGROUND
+
+elif [ "$x" == "app2" ]
+then
+	cp -rf /mycode/webapp2/* /var/www/html/
+	httpd -DFOREGROUND
+else
+	echo "please select the correct env for app1 or app2" > /var/www/html/index.html
+	httpd -DFOREGROUND
+fi
+```
+#### Docker build command
+```shell
+docker build -f adhochttpd.dockerfile -t ashishpandey1504/may2020q1:v1 .
+```
+---------
+
+### :two: Question 2
+
+##### q2.yml
+```
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    adhoc: shraddhasainiq2
+  name: adhocpod1
+spec:
+  containers:
+  - image: nginx
+    name: adhocpod1
+    ports:
+    - containerPort: 80
+    resources: {}
+  dnsPolicy: ClusterFirst
+  restartPolicy: Never
+status: {}
+```
+#### command
+```shell
+kubectl create -f q2.yaml
+```
+
+#### q2svcshraddhasaini.yml
+```shell
+apiVersion: v1
+kind: Service
+metadata:
+  name: q2svcshraddhasaini
+spec:
+  type: NodePort
+  selector:
+    adhoc: shraddhsainiq2
+  ports:
+    - port: 80
+      targetPort: 80
+```
+#### Command
+```shell
+kubectl create -f q2svcshraddhasaini.yml
+```
+--------
+### :three: Question 3
+>write a pod file named q3.yaml where your pod name is adhocpod2
+>
+>it must be underyour own namespace use container port 80 with docker image pushed in question 1
+>
+>label of the pod must be adhoc:yournameq3 like adhoc:ashuq3
+>
+>it must host webapp2 configured in docker image
+>
+>pod must be scheduled in minion 2
+>
+>create a service called q3svcyourname example q3svcashu of NodePort type and check by accessing it
+>
+>NodePort must be some custom port in the range of 30000-32000 make sure someone is not using the same port number
+>
