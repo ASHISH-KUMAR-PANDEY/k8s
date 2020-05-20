@@ -1,6 +1,6 @@
 # Exam
 
-### :one: Question 1
+### question 1
 adhochttpd.dockerfile
 ```shell
 FROM centos
@@ -17,8 +17,8 @@ RUN chmod +x /scripts/start.sh
 ENTRYPOINT ["/bin/bash","/scripts/start.sh"]
 ```
 
-#### Git clone command
-```shell
+#### Git clone
+```
 git clone https://github.com/mdn/beginner-html-site-styled
 git clone https://github.com/microsoft/project-html-website
 ```
@@ -56,7 +56,7 @@ kind: Pod
 metadata:
   creationTimestamp: null
   labels:
-    adhoc: shraddhasainiq2
+    adhoc: ashishpandeyq2
   name: adhocpod1
 spec:
   containers:
@@ -74,45 +74,42 @@ status: {}
 kubectl create -f q2.yaml
 ```
 
-#### q2svcshraddhasaini.yml
+#### q2svcashishpandey.yml
 ```shell
 apiVersion: v1
 kind: Service
 metadata:
-  name: q2svcshraddhasaini
+  name: q2svcashishpandey
 spec:
   type: NodePort
   selector:
-    adhoc: shraddhsainiq2
+    adhoc: ashishpandeyq2
   ports:
     - port: 80
       targetPort: 80
 ```
 #### Command
 ```shell
-kubectl create -f q2svcshraddhasaini.yml
+kubectl create -f q2svcashishpandey.yml
 ```
 --------
-### :three: Question 3
-## Task 3
-#### write podfile with custom scheduling
-#### Create a pod file named "q3.yaml"
+### Question 3
 ```
 apiVersion: v1
 kind: Pod
 metadata:
   creationTimestamp: null
   labels:
-    adhoc: rhythmbhiwaniq3
+    adhoc: ashishpandeyq3
   name: adhocpod2
 spec:
   nodeSelector:
-    kubernetes.io/hostname: ip-172-31-41-104.ec2.internal
+    kubernetes.io/hostname: ip-172-31-33-139.ec2.internal
   containers:
   - env:
     - name: x
       value: app2
-    image: rhythmbhiwani/may2020q1:v1
+    image: ashishpandey/may2020q1:v1
     name: adhocpod2
     ports:
     - containerPort: 80
@@ -126,7 +123,7 @@ status: {}
 kubectl create -f q3.yaml
 ```
 
-#### Create service file named "q3svcrhythmbhiwani.yaml"
+#### Create service file named "q3svcashishpandey.yml"
 ```
 apiVersion: v1
 kind: Service
@@ -139,24 +136,23 @@ spec:
   ports:
     - port: 80
       targetPort: 80
-      nodePort: 32123
+      nodePort: 31905
 ```
-#### Create the service
+#### Create
 ```
-kubectl create -f q3svcrhythmbhiwani.yaml
+kubectl create -f q3svcashishpandey.yml
 ```
 
 
-## Task 4
+## question 4
 #### create a replicasets
-##### Create file named "q4rs.yaml"
-```
+##### Create file named "q4.yml"
 apiVersion: apps/v1
 kind: ReplicaSet
 metadata:
-  name: adhocrsrhythmbhiwani4
+  name: adhocrsashishpandey4
   labels:
-    app: adhocrsrhythmbhiwani4
+    app: adhocrsashishpandey4
 spec:
   replicas: 1
   selector:
@@ -166,7 +162,7 @@ spec:
     metadata:
       name: adhocpod4
       labels:
-        adhoc: rhythmbhiwaniq4
+        adhoc: ashishpandeyq4
     spec:
       containers:
       - env:
@@ -181,7 +177,7 @@ spec:
 #### Create the replicaset
 kubectl create -f q4.yml
 
-#### Create file "q4svcrhythmbhiwani.yml"
+#### Create file "q4svcashishpandey.yml"
 apiVersion: v1
 kind: Service
 metadata:
