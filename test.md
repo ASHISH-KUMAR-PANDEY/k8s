@@ -199,6 +199,7 @@ kubectl create -f q4svcashishpandey.yml
 
 ## Question 5
 ##### Create file "q1dep1.yml"
+
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -226,7 +227,7 @@ spec:
           - containerPort: 80
 	  
 #### Create
-kubectl create -f q5dep1.yaml
+kubectl create -f q1dep1.yml
 
 #### Create file "q5svcashishpandey.yml"
 apiVersion: v1
