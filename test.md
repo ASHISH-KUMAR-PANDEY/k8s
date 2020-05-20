@@ -147,7 +147,7 @@ kubectl create -f q3svcashishpandey.yml
 ## question 4
 #### create a replicasets
 ##### Create file named "q4.yml"
-
+```
 apiVersion: apps/v1
 kind: ReplicaSet
 metadata:
@@ -174,10 +174,10 @@ spec:
         name: adhocpod4
         ports:
         - containerPort: 80
---------
+```
 #### Create the replicaset
 kubectl create -f q4.yml
---------
+```
 #### Create file "q4svcashishpandey.yml"
 apiVersion: v1
 kind: Service
@@ -194,10 +194,10 @@ spec:
   selector:
     adhoc: ashishpandeyq4
   type: LoadBalancer
-  --------
+ ```
 #### Create
 kubectl create -f q4svcashishpandey.yml
---------
+```
 ## Question 5
 ##### Create file "q1dep1.yml"
 
@@ -226,10 +226,10 @@ spec:
           name: adhocpod2
           ports:
           - containerPort: 80
---------  
+  ```
 #### Create
 kubectl create -f q1dep1.yml
---------
+```
 #### Create file "q5svcashishpandey.yml"
 apiVersion: v1
 kind: Service
@@ -246,6 +246,6 @@ spec:
   selector:
     adhoc: ashishpandeyq5
   type: LoadBalancer
-  --------
+```
 #### Create
 kubectl create -f q5svcashishpandey.yml
