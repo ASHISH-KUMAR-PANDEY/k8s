@@ -203,6 +203,7 @@ kubectl create -f q4svcashishpandey.yml
 ```
 ## Question 5
 ##### Create file "q1dep1.yml"
+```
 
 apiVersion: apps/v1
 kind: Deployment
