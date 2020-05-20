@@ -229,7 +229,7 @@ spec:
           name: adhocpod2
           ports:
           - containerPort: 80
-  ```
+	  ```
 #### Create
 ```
 kubectl create -f q1dep1.yml
@@ -255,4 +255,3 @@ spec:
 #### Create
 ```
 kubectl create -f q5svcashishpandey.yml
-```
