@@ -126,7 +126,7 @@ kubectl create -f q3.yaml
 apiVersion: v1
 kind: Service
 metadata:
-  name: q3svcrhythmbhiwani
+  name: q3svcashishpandey
 spec:
   type: NodePort
   selector:
